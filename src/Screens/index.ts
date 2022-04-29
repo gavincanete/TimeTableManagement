@@ -1,0 +1,7 @@
+export {default as Registration} from './Registration'
+export {default as Login} from './Login'
+export {default as DayList} from './DayList'
+export {default as TimeTableList} from './TimeTableList'
+export {default as NewTimeTable} from './NewTimeTable'
+export {default as InitialScreen} from './InitialScreen'
+export {default as EditTimeTable} from './EditTimeTable'
