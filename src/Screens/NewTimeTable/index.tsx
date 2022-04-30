@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Alert} from 'react-native'
+import {View, Alert, BackHandler} from 'react-native'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import {useState, 
@@ -22,9 +22,10 @@ import {showStartTime,
 
 import { TextInput, Button, Subheading } from 'react-native-paper';
 
-import {checkTimeTable} from '../../Utils/Validator';
+import {checkTimeTable} from '../../Utils';
 
 import { styles } from './styles';
+import { has } from 'immer/dist/internal';
 
 // TODO: add actions for adding new time table using dispatch
 
@@ -102,6 +103,35 @@ const NewTimeTable = (props: any) => {
     else
       navigation.pop(1)
   }
+
+  const newTimeTableBackHandler = () => {    
+    if(hasChange){
+        Alert.alert(
+          'Time Table',
+          'You have unsaved changes. Do you want to cancel?',
+          [
+            {
+              text: 'Yes',
+              onPress: () => navigation.pop(1),
+            },
+            {
+              text: 'No',
+              onPress: () => null
+            }
+          ]
+        )
+    }
+    else
+      navigation.pop(1)
+    return true
+  }
+  
+  useEffect(() => {
+      BackHandler.addEventListener('hardwareBackPress', newTimeTableBackHandler)
+
+      return () => 
+          BackHandler.removeEventListener('hardwareBackPress', newTimeTableBackHandler)
+  },[hasChange])
 
   return (
     <View style={styles.container}>

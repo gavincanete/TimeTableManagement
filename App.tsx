@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavigationTimeTable from './src/Utils/NavigationTimeTable'
+import {NavigationTimeTable} from './src/Utils'
 
 import {timeTableStore, persistor} from './src/Utils/features/'
 import {Provider} from 'react-redux'

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Alert, View} from 'react-native'
+import {Alert, View, BackHandler} from 'react-native'
 
 import {useState,
         useSelector,
@@ -11,19 +11,47 @@ import {useState,
 import {IUser, login} from '../../Utils/features/user/userSlice'
 
 import { Button, TextInput, Title } from 'react-native-paper'
-import { checkUser } from '../../Utils/Validator';
+import { checkUser } from '../../Utils';
 
 import {styles} from './styles'
-
 
 const Login = (props: {navigation: any}) => {
   const user = useSelector((state: RootState) => state.Root.User)
   const dispatch = useDispatch()
 
-  const {navigation} = props
+  const {navigation} = props 
 
   const [username, setUsername] = useState(user.username)
   const [password, setPassword] = useState(user.password)
+
+  const backHandler = () => {
+    if(navigation.getState().routes.length < 3){    
+      Alert.alert(
+        'Time Table Manager',
+        'Do you want to exit?',
+        [
+          {
+            text: 'Yes',
+            onPress: () => BackHandler.exitApp()            
+          },
+          {
+            text: 'No',
+            onPress: () => null
+          }
+        ]
+      )  
+    }   
+    else
+      navigation.pop(1) 
+    return true
+  }
+  
+  useEffect(() => {
+      BackHandler.addEventListener('hardwareBackPress', backHandler)
+
+      return () => 
+          BackHandler.removeEventListener('hardwareBackPress', backHandler)
+  },[])
 
   function accessDayList() {
 
@@ -36,7 +64,7 @@ const Login = (props: {navigation: any}) => {
 
     if(!error){
       dispatch(login())
-      Alert.alert('User', 'Successfully Login!')      
+      Alert.alert('User', 'Successfully Login!')
       navigation.navigate('DayList')
     }
     else

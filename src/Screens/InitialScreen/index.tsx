@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Text, View} from 'react-native'
+import {Text, Alert, BackHandler} from 'react-native'
 
 import {useEffect,         
         useSelector,
@@ -22,7 +22,7 @@ const InitialScreen = (props: {navigation: any}) => {
         else{
             // Nothing to do
         }            
-    },[])
+    },[])    
 
     return (
         <Text>Loading...</Text>

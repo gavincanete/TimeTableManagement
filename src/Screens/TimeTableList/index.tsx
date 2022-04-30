@@ -13,7 +13,7 @@ import { styles } from './styles';
 
 
 const TimeTableList = (props:any) => {    
-    const {navigation, route} = props
+    const {navigation} = props
 
     const timeTableList = useSelector((state: RootState) => state.Root.TimeTable.filters)
     const dispatch = useDispatch()   

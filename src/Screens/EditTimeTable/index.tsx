@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Alert} from 'react-native'
+import {View, Alert, BackHandler} from 'react-native'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 
@@ -114,6 +114,35 @@ const EditTimeTable = (props: any) => {
         else
           navigation.pop(1)
       }
+
+      const editTimeTableBackHandler = () => {    
+        if(hasChange){
+            Alert.alert(
+              'Time Table',
+              'You have unsaved changes. Do you want to cancel?',
+              [
+                {
+                  text: 'Yes',
+                  onPress: () => navigation.pop(1),
+                },
+                {
+                  text: 'No',
+                  onPress: () => null
+                }
+              ]
+            )
+        }
+        else
+          navigation.pop(1)
+        return true
+      }
+      
+      useEffect(() => {
+          BackHandler.addEventListener('hardwareBackPress', editTimeTableBackHandler)
+    
+          return () => 
+              BackHandler.removeEventListener('hardwareBackPress', editTimeTableBackHandler)
+      },[hasChange])
 
     return (
         <View style={styles.container}>

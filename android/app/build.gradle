@@ -167,7 +167,7 @@ android {
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"            
         }
     }
 
@@ -226,3 +226,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from:("../../node_modules/react-native-vector-icons/fonts.gradle");
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+

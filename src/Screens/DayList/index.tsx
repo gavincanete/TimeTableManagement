@@ -27,10 +27,14 @@ const DAYS = [
 ]
 
 
-const DayList = (props: {navigation: any}) => {    
+const DayList = (props: {navigation: any, route: any}) => {    
     const timeTableList = useSelector((state: RootState) => state.Root.TimeTable.list)
     const dispatch = useDispatch()
     const navigation = props.navigation
+
+    const {route} = props
+
+    console.log('Route', route.name)
 
     useEffect(() => {
         if(timeTableList.length === 0)

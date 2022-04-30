@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Alert, View} from 'react-native'
+import {Alert, View, BackHandler} from 'react-native'
 
 import { TextInput, 
          Title, 
@@ -29,6 +29,36 @@ const Registration = (props: {navigation: any}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+
+  const backHandler = () => {
+    if(navigation.getState().routes.length < 3){
+      Alert.alert(
+        'Time Table Manager',
+        'Do you want to exit?',
+        [
+          {
+            text: 'Yes',
+            onPress: () => BackHandler.exitApp()            
+          },
+          {
+            text: 'No',
+            onPress: () => null
+          }
+        ]
+      )
+    }
+    else
+      navigation.pop(1)    
+    return true
+  }
+
+  useEffect(() => {
+      BackHandler.addEventListener('hardwareBackPress', backHandler)
+
+      return () => 
+          BackHandler.removeEventListener('hardwareBackPress', backHandler)
+
+  },[])
 
   function accessLogin() {
     const tempUser:IUser = {
