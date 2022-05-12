@@ -7,6 +7,13 @@ import {Provider} from 'react-redux'
 
 import {PersistGate} from 'redux-persist/integration/react'
 
+import { Text, Card } from 'react-native-paper';
+import { View } from 'react-native';
+
+import { NewTodoList } from './src/Screens';
+
+import { autoIncrement } from './src/Utils/Computations';
+
 export default function App() {
   return (
     <Provider store={timeTableStore}>     
@@ -15,5 +22,9 @@ export default function App() {
         </PersistGate>
      </Provider>
   )  
+
+  // return (
+  //   <AnyFunction/>
+  // )
 }
 

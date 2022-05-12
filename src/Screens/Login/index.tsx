@@ -21,8 +21,8 @@ const Login = (props: {navigation: any}) => {
 
   const {navigation} = props 
 
-  const [username, setUsername] = useState(user.username)
-  const [password, setPassword] = useState(user.password)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
   const backHandler = () => {
     if(navigation.getState().routes.length < 3){    
@@ -45,7 +45,7 @@ const Login = (props: {navigation: any}) => {
       navigation.pop(1) 
     return true
   }
-  
+
   useEffect(() => {
       BackHandler.addEventListener('hardwareBackPress', backHandler)
 
@@ -63,6 +63,7 @@ const Login = (props: {navigation: any}) => {
     const error = checkUser({user: tempUser, storedUser: user, status: 'login'})
 
     if(!error){
+      
       dispatch(login())
       Alert.alert('User', 'Successfully Login!')
       navigation.navigate('DayList')
@@ -86,15 +87,13 @@ const Login = (props: {navigation: any}) => {
         <TextInput
           mode="outlined"
           dense
-          label="Username"
-          value={user.username}
+          label="Username"          
           onChangeText={setUsername}
         />
         <TextInput
           mode="outlined"
           dense
-          label="Password"
-          value={user.password}
+          label="Password"          
           secureTextEntry={true}
           onChangeText={setPassword}
         />

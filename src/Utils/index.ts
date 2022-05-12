@@ -1,2 +1,2 @@
-export {checkTimeTable, checkUser} from './Validator'
+export {checkTimeTable, checkUser, checkTodolist} from './Validator'
 export {default as NavigationTimeTable} from './NavigationTimeTable'

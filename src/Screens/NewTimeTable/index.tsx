@@ -11,7 +11,9 @@ import {useState,
 import {addTimeTable, 
     updateKey, 
     TimeTableProperties,
-    getCerainTable} from '../../Utils/features/timeTable/timeTableSlice'
+    getCerainTable,
+    Checks,
+    computeTodolist} from '../../Utils/features/timeTable/timeTableSlice'
 
 import {showStartTime,
     hideStartTime,
@@ -25,7 +27,7 @@ import { TextInput, Button, Subheading } from 'react-native-paper';
 import {checkTimeTable} from '../../Utils';
 
 import { styles } from './styles';
-import { has } from 'immer/dist/internal';
+
 
 // TODO: add actions for adding new time table using dispatch
 
@@ -61,15 +63,17 @@ const NewTimeTable = (props: any) => {
   function createTimeTable() {
     const {startTime, endTime} = timePickerContext
 
-    const timeTable: TimeTableProperties = {      
+    const timeTable: TimeTableProperties<Checks> = {      
       key: timeTableContext.key.toString(),
       subject: subject,
       startTime: startTime,
       endTime: endTime,
-      day: timeTableContext.day,
+      day: timeTableContext.day,      
+      todolistPercentage: 'Empty',
+      todolist: []
     }
 
-    const error = checkTimeTable({timeTable})    
+    const error = checkTimeTable({timeTable})
     
     if(!error){      
       Alert.alert("Time Table","Successfully Created")      
@@ -77,11 +81,12 @@ const NewTimeTable = (props: any) => {
       dispatch(addTimeTable(timeTable))
       dispatch(getCerainTable(timeTableContext.day))
       dispatch(updateKey())
+      dispatch(computeTodolist(timeTableContext.day))
 
       navigation.pop(1)
     }      
     else
-    Alert.alert('Error', error)
+      Alert.alert('Error', error)
   }
 
   function cancelChanges() {

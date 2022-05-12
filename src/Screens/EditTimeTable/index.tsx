@@ -12,7 +12,9 @@ import {useState,
 
 import {updateTimeTable, 
         getCerainTable,
-        TimeTableProperties} from '../../Utils/features/timeTable/timeTableSlice'
+        TimeTableProperties,
+        Checks,
+        computeTodolist} from '../../Utils/features/timeTable/timeTableSlice'
 
 
 import { setStartTime,
@@ -70,12 +72,15 @@ const EditTimeTable = (props: any) => {
     function editTimeTable() {     
         const {startTime, endTime} = timePickerContext        
 
-        const timeTable: TimeTableProperties = {
+        // console.log('Todolist', timeTableContext.timeTable.todolist)
+        const timeTable: TimeTableProperties<Checks> = {
             key: timeTableContext.timeTable.key,
             subject: subject,
             startTime: startTime,
             endTime: endTime,
             day: timeTableContext.day,
+            todolistPercentage: timeTableContext.timeTable.todolistPercentage,
+            todolist: timeTableContext.timeTable.todolist
         }
 
         const error = checkTimeTable({timeTable})        
@@ -85,9 +90,9 @@ const EditTimeTable = (props: any) => {
             Alert.alert('Time Table', 'No changes have made')
         else if(!error){
             Alert.alert("Time Table",'Successfully Updated')
-
+            
             dispatch(updateTimeTable(timeTable))
-            dispatch(getCerainTable(timeTableContext.day))
+            dispatch(getCerainTable(timeTableContext.day))            
 
             navigation.pop(1)
         }

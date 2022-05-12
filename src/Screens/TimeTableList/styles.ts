@@ -8,22 +8,46 @@ export const styles = StyleSheet.create({
   },
   card: {
     marginBottom:'3%', 
-    borderColor: 'gray', 
-    borderWidth: 0.5
+    borderColor: '#683abd', 
+    borderWidth: 2,    
   },
   title: {
-    color: 'red'
+    color: 'red',
+    marginLeft: '1%',    
+    marginRight: '25%',    
+    marginTop: -45,
   },
   removeTableButton: {
-    marginTop: -30, 
-    marginLeft: '70%'
-  },
+    marginTop: -10,
+    marginLeft: '1%',
+    width: '10%',
+
+    // borderWidth: 1,
+    // borderColor: 'blue'
+  },  
   editTableButton: {
-    marginTop: -30
+    marginTop: -10, 
+    marginLeft: '79%', 
+    width: '10%',
+
+    // borderWidth: 1, 
+    // borderColor: 'red'
+  },
+  emptyText: {
+    fontSize: 50, 
+    marginTop: '50%', 
+    height: '45%', 
+    color: '#b2acbd'
   },
   addButton: {
-    width: '20%', 
-    marginLeft: '79%'
+    position: 'absolute' ,
+    margin: 16,     
+    right: 0, 
+    bottom: -105,
+    backgroundColor: '#8d5ee6'
+  },
+  addText: {
+    fontSize: 20
   },
   backButton: {
     marginTop: '10%',
@@ -35,5 +59,25 @@ export const styles = StyleSheet.create({
   container: {
       marginLeft: '1%',
       marginRight: '1%'
-  }
+  },
+  todolistButton: {
+    marginLeft: '55%',    
+    backgroundColor: '#8d5ee6',
+    marginTop: -65,
+    width: '38%'
+    // color: 'red'
+    
+    // borderWidth: 1,
+    // borderColor: 'gray'
+  },
+  todolistPercentage: {
+    marginLeft: '1%', 
+    marginTop: '2%',
+    fontSize: 18
+  },
+  scheduleText: {
+    fontSize: 20, 
+    marginTop: '10%', 
+    marginLeft: '1%',    
+  },
 })

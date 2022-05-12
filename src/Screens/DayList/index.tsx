@@ -8,7 +8,8 @@ import {useDispatch,
 
 import {getSamples,
         setDay,
-        getCerainTable} from '../../Utils/features/timeTable/timeTableSlice'
+        getCerainTable,
+        computeTodolist} from '../../Utils/features/timeTable/timeTableSlice'
 
 import { logout } from '../../Utils/features/user/userSlice';
 
@@ -16,6 +17,7 @@ import { Button, List } from 'react-native-paper';
 
 import { styles } from './styles';
 
+import {production_environment} from '../../Utils/EnvironmentConfigurations'
 
 const DAYS = [
     {'day': 'Monday', 'key': '1'},
@@ -32,18 +34,17 @@ const DayList = (props: {navigation: any, route: any}) => {
     const dispatch = useDispatch()
     const navigation = props.navigation
 
-    const {route} = props
-
-    console.log('Route', route.name)
+    const {route} = props    
 
     useEffect(() => {
-        if(timeTableList.length === 0)
+        if(timeTableList.length == 0 && !production_environment)
             dispatch(getSamples())
     },[])
 
     function accessTimetable(day: string){
         dispatch(getCerainTable(day))
         dispatch(setDay(day))
+        dispatch(computeTodolist(day))
         navigation.navigate('TimeTableList')
     }   
 

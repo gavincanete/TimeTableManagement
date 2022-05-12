@@ -73,8 +73,7 @@ export const timePickerSlice = createSlice({
             state.startTime = 'Start Time'
             state.endTime = 'End Time'
         },
-        setHistory: (state) => {
-            console.log('STATE',state)
+        setHistory: (state) => {            
             if(state.history){
                 state.history.prevStartTime = state.startTime
                 state.history.prevEndTime = state.endTime                

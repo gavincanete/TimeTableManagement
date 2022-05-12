@@ -6,7 +6,9 @@ import {InitialScreen,
         DayList, 
         TimeTableList, 
         NewTimeTable,
-        EditTimeTable} from '../../Screens'
+        TodoList,
+        EditTimeTable,
+        NewTodoList} from '../../Screens'
 
 import {useSelector, RootState} from '../../CommonLib'
 
@@ -16,8 +18,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const StackTimeTable = createNativeStackNavigator();
 
 const NavigationTimeTable = () => {
-    const day:string = useSelector((state: RootState) => state.Root.TimeTable.day)
-    console.log(day)
+    const day:string = useSelector((state: RootState) => state.Root.TimeTable.day)    
     
     return (
         <NavigationContainer>
@@ -29,6 +30,8 @@ const NavigationTimeTable = () => {
                 <StackTimeTable.Screen name="TimeTableList" component={TimeTableList} options={{title: `${day}`}}/>
                 <StackTimeTable.Screen name="NewTimeTable" component={NewTimeTable} options={{title: 'New Time Table'}}/>               
                 <StackTimeTable.Screen name="EditTimeTable" component={EditTimeTable}  options={{title: 'Edit Time Table'}}/>
+                <StackTimeTable.Screen name="TodoList" component={TodoList}  options={{title: `${day} TodoList`}}/>
+                <StackTimeTable.Screen name="NewTodoList" component={NewTodoList}  options={{title: 'New TodoList'}}/>
             </StackTimeTable.Navigator>
         </NavigationContainer>
     )

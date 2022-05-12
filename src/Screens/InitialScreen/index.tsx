@@ -9,9 +9,7 @@ import {useEffect,
 
 
 const InitialScreen = (props: {navigation: any}) => {
-    const user = useSelector((state: RootState) => state.Root.User)
-
-    console.log('USER',user)
+    const user = useSelector((state: RootState) => state.Root.User)    
 
     useEffect(() => {
         // validatePersistState()

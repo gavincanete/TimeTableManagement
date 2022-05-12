@@ -1,13 +1,19 @@
 // TODO: Create Time Table Validator
 // TODO: Create User Validator
+// TODO: Create Todolist Validator
+
+export const checkTodolist = (props: any) => {
+    const {todolist} = props
+
+    if(todolist === '')
+        return 'Missing Todolist Field'
+}
 
 export const checkTimeTable = (props: any) => {    
     const {timeTable} = props
     const {subject, 
            startTime,
-           endTime} = timeTable
-
-    console.log(timeTable)
+           endTime} = timeTable    
 
     if(subject === ''){
         return 'Missing Subject Field'
