@@ -4,7 +4,7 @@
 2) On the Assets Category, click the dropdown and select the time_table_management.apk
 3) Select the downloaded App. When prompted with security from Chrome, set allow install unknown app
 from your mobile settings
-4) Select the back button and install the app
+4) Click the back button and install the app
 
 
 ## Screen Shots
