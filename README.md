@@ -1,10 +1,10 @@
 # Steps on installing TimeTableManagement app
 
-1) On the right side of the Folder list, select the Releases text.
-2) On the Assets Category, click the dropdown and select the time_table_management.apk
-3) Select the downloaded App. When prompted with security from Chrome, set allow install unknown app
+1) On the <em>right side<em> of the Folder list, <b>select</b> the <em>Releases</em> text.
+2) On the Assets Category, <b>click</b> the dropdown and <b>select</b> the <em>time_table_management.apk</em>
+3) <b>Select</b> the downloaded App. When prompted with security from Chrome, set allow install unknown app
 from your mobile settings
-4) Click the back button and install the app
+4) <b>Click</b> the back button and <b>install</b> the app
 
 
 ## Screen Shots
